@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { QuizLayout } from "./components/QuizLayout"
 import axios from "axios";
 import { categories, difficulty } from "./data/data";
@@ -44,6 +44,13 @@ const getQuiz = async (e:React.MouseEvent<HTMLFormElement>)=>{
   }
 }
 
+// ********New Featue
+function newFea(){
+  console.log("new");
+  
+}
+
+newFea()
 
 
   return (
@@ -53,8 +60,8 @@ const getQuiz = async (e:React.MouseEvent<HTMLFormElement>)=>{
         <div className="w-[350px] px-10 h-max py-10 shadow">
           <h1>Welcome to Quiz App</h1>
           <form onSubmit={getQuiz} className="flex flex-col">
-          <select required className="border mt-4 py-2 " name="category" id="categories" onChange={handleInputChange}>
-            <option value="" selected>Select a category</option>
+          <select required  className="border mt-4 py-2 " name="category" id="categories" onChange={handleInputChange}>
+            <option value="any" selected>Select a category</option>
              {
                 categories.map((category,index)=>{
                   return <option key={index} value={category.id}>{category.label}</option>
@@ -62,7 +69,7 @@ const getQuiz = async (e:React.MouseEvent<HTMLFormElement>)=>{
              }
           </select>
           <select required className="border mt-4 py-2 " name="difficulty" id="difficulty" onChange={handleInputChange}>
-            <option value="" selected>Select Difficulty</option>
+            <option value="easy" selected>Select Difficulty</option>
              {
                 difficulty.map((category,index)=>{
                   return <option key={index} value={category.id}>{category.label}</option>
